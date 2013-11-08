@@ -1,0 +1,8 @@
+Django==1.6
+South==0.8.2
+argparse==1.2.1
+django-admin-tools==0.5.1
+django-haystack==2.1.0
+gunicorn==18.0
+wsgiref==0.1.2
+xapian-haystack==1.1.5beta
