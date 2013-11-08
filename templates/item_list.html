@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block content %}
+    <h2>{% trans "List" %}</h2>
+    <ul>
+        {% for item in items %}
+            <li><a href='/item/{{ item.name }}'>{{ item.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
