@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load i18n %}
 {% block content %}
 	<h3>{% trans "List" %}</h3>
       <p>{% trans "Get two columns" %} <strong>{% trans "item list and show menu bar" %}</strong>.</p>
@@ -12,13 +12,4 @@
             </div>
         {% endfor %}
         </div>
-        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
-          <div class="list-group">
-            <a href="#" class="list-group-item active">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-          </div>
-        </div>
-      </div>
 {% endblock %}

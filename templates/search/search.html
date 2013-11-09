@@ -1,7 +1,8 @@
-{% extends 'base.html' %}
+{% extends 'basesearch.html' %}
 {% load i18n %}
 {% block content %}
-<div class="row">
+<div  class="row">
+    <div class="col-md-2"></div>
     <div class="col-md-8">
     <form method="get" action=".">
         <div class="panel panel-primary">
@@ -9,15 +10,19 @@
                 <h3 class="panel-title">{% trans "Search" %}</h3>
             </div>
             <div class="panel-body">
-                {{ form.as_p }}
-                <p><input type="submit" class="btn btn-default" value='{% trans "Search" %}'></p>
+                <div class="input-group">
+                <input id='id_q' name='q' type="text" placeholder="{% trans 'Search' %}" class="form-control">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-default" type="button">{% trans "Search" %}</button>
+                </span>
+                </div>
             </div>
         </div>
-
-        {% if query %}
-        <div class="panel panel-default">
+       <div class="panel panel-default">
             <div class="panel-heading">{% trans "Result" %}</div>
             <div class="panel-body">
+        {% if query %}
+
             {% for result in page.object_list %}
                 <p>
                     <a href="/item/{{ result.object.id }}">{{ result.object.name }}</a>
@@ -32,22 +37,15 @@
                     |
                     {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next &raquo;{% if page.has_next %}</a>{% endif %}
                 </div>
+
             {% endif %}
             {% else %}
+                <p>{% trans "Enter search query..." %}</p>
                 {# Show some example queries to run, maybe query syntax, something else? #}
             {% endif %}
             </div>
         </div>
-
     </form>
     </div>
-    <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
-          <div class="list-group">
-            <a href="#" class="list-group-item active">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-            <a href="#" class="list-group-item">Link</a>
-          </div>
-    </div>
-</div>
+    <div class="col-md-2"></div>
 {% endblock %}
