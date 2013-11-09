@@ -1,13 +1,29 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% block content %}
-    <h2>{% trans "Item" %}</h2>
-    <ul>
-            <li>{{ item.name }}</li>
-            <li>{{ item.comment }}</li>
-{{ item.price }}
-    </ul>
-{% for i in item.type.all %}
-	{{ i.name }}
-{% endfor %}
+	<h3>{% trans "Item" %}</h3>
+      <p>{% trans "Get two columns" %} <strong>{% trans "item detail and menu bar" %}</strong>.</p>
+      <div class="row">
+        <div class="col-md-8">
+
+            <div class="jumbotron">
+            	<h1>{{ item.name }}</h1>
+            	<p>{{ item.comment }}</p>
+            	<p>{% trans "Price" %}:{{ item.price }}</p>
+            	<p>{% trans "Category" %}:
+            	{% for i in item.type.all %}
+					{{ i.name }}
+				{% endfor %}
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+          <div class="list-group">
+            <a href="#" class="list-group-item active">Link</a>
+            <a href="#" class="list-group-item">Link</a>
+            <a href="#" class="list-group-item">Link</a>
+            <a href="#" class="list-group-item">Link</a>
+          </div>
+        </div>
+      </div>
+
 {% endblock %}
