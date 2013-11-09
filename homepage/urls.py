@@ -15,6 +15,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^item/(?P<pk>\w+)/', ItemDetailView.as_view()),
     url(r'^ajaxexample_json$', ajax),
+
 )
 
 urlpatterns += patterns('',

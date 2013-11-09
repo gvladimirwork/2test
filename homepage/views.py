@@ -3,9 +3,17 @@ from django.views.generic import ListView
 from homepage.models import Item
 from homepage.models import Style
 
+from django.views.generic import View
+from django.views.generic.base import TemplateResponseMixin
+
+from haystack.query import SearchQuerySet
+
 from django.http import *
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+
+import json
+from django.core import serializers
 from django.utils import simplejson
 
 class ItemList(ListView):
@@ -30,11 +38,10 @@ class ItemDetailView(DetailView):
         return context
 
 def ajax(request):
-	if request.POST.has_key('client_response'):
-		x = request.POST['client_response']                 
-		y = '123'                       
-		response_dict = {}                                         
-		response_dict.update({'server_response': y })                                                                  
-		return HttpResponse(simplejson.dumps(response_dict), mimetype='application/javascript')
-	else:
-		return render_to_response('ajaxexample.html', context_instance=RequestContext(request))
+    if request.POST.has_key('client_response'):
+        z = request.POST['client_response']
+        y = SearchQuerySet().filter(content=z)
+        data = serializers.serialize("json", [q.object for q in y])
+        return HttpResponse(data, content_type="application/json")
+    else:
+        return render_to_response('ajaxexample.html', context_instance=RequestContext(request))

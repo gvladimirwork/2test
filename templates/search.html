@@ -16,8 +16,8 @@
 						csrfmiddlewaretoken: '{{ csrf_token }}'
 						},
 						success : function(json) {
-							
-							$('#movieTmpl').tmpl(json).appendTo("#movieListBag");
+							alert (json)
+							$('#movieTmpl').append(json);
 						},
 						error : function(xhr,errmsg,err) {
 							alert(xhr.status + ": " + xhr.responseText);
@@ -36,7 +36,7 @@
         <div class="movie-bag">
             <div class="base-info">
                 <h2>
-                    ${name}
+                    ${json[1]}
                 </h2>
                 <p>
                     Режиссер: ${comment}<br />
@@ -44,6 +44,11 @@
                 </p>
             </div>
         </div>
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $('#movieTmpl').tmpl(dataItems).appendTo('#movieListBag');
+        });
     </script>
 <div id="movieListBag"></div>
 {% endblock %}
