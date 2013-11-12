@@ -18,7 +18,7 @@ class Style(models.Model):
 class Item(models.Model):
     name = models.CharField(max_length=30)
     comment = models.TextField()
-    type = models.ManyToManyField(Style)
+    type1 = models.ManyToManyField(Style)
     price = models.CharField(max_length=30)
 
     class Meta:

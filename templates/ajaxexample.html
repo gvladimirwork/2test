@@ -1,49 +1,10 @@
-{% extends "base.html" %}
+{% extends "basesearch.html" %}
 {% load i18n %}
 {% block content %}
-<script src="/static/js/jquery.tmpl.js" type="text/javascript"></script>
-<script type='text/javascript' src='http://code.jquery.com/jquery-1.8.2.js'></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("#forminput").keyup(function() {
-			var input_string = $("#forminput").val();
-			$.ajax({
-				url : "/ajaxexample_json",
-				type : "POST",
-				dataType: "json",
-				data : {
-						client_response : input_string,
-						csrfmiddlewaretoken: '{{ csrf_token }}'
-						},
-						success : function(json) {
-							
-							$('#movieTmpl').tmpl(json).appendTo("#movieListBag");
-						},
-						error : function(xhr,errmsg,err) {
-							alert(xhr.status + ": " + xhr.responseText);
-						}
-			});
-			return false;
-		});
-	});
-</script>
 <form method="post" name="example form" >
 	{% csrf_token %}
 	<input name="example" id="forminput" type="text">
 	<input id="button" type="button" value="send to server"></input>
 </form>
-    <script id="movieTmpl" type="text/x-jquery-tmpl">
-        <div class="movie-bag">
-            <div class="base-info">
-                <h2>
-                    ${name}
-                </h2>
-                <p>
-                    Режиссер: ${comment}<br />
-                    В ролях: ${price}<br />
-                </p>
-            </div>
-        </div>
-    </script>
 <div id="movieListBag"></div>
 {% endblock %}

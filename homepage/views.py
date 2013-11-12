@@ -44,4 +44,4 @@ def ajax(request):
         data = serializers.serialize("json", [q.object for q in y])
         return HttpResponse(data, content_type="application/json")
     else:
-        return render_to_response('ajaxexample.html', context_instance=RequestContext(request))
+        return render_to_response('search.html', context_instance=RequestContext(request))

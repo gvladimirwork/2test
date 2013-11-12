@@ -10,7 +10,7 @@
             	<p>{{ item.comment }}</p>
             	<p>{% trans "Price" %}:{{ item.price }}</p>
             	<p>{% trans "Category" %}:
-            	{% for i in item.type.all %}
+            	{% for i in item.type1.all %}
 					{{ i.name }}
 				{% endfor %}
             </div>
