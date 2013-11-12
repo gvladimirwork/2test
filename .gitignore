@@ -1,2 +1,3 @@
 2test/
 *.pyc
+*.fuse*

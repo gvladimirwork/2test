@@ -13,7 +13,7 @@ urlpatterns = patterns('',
     url(r'^i18n/', include('django.conf.urls.i18n')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^item/(?P<pk>\w+)/', ItemDetailView.as_view()),
-    url(r'^search/', ajax),
+    url(r'^search/$', ajax),
 
 )
 """

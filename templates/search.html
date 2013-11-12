@@ -4,14 +4,19 @@
 <div  class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8">
-    <form method="post" name="example form" >
+    <form method="post" action='.'>
     {% csrf_token %}
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">{% trans "Search" %}</h3>
             </div>
             <div class="panel-body">
+            <div class="input-group">
                 <input id='id_q' name='q' type="text" placeholder="{% trans 'Search' %}" class="form-control">
+                <span class="input-group-btn">
+                    <button id='butt' class='btn btn-danger'>Click</button> 
+                </span>
+            </div>
             </div>
         </div>
        <div class="panel panel-default">
@@ -29,6 +34,8 @@
             </div>
         </div>
     </form>
+        </div>
+    
     </div>
     <div class="col-md-2"></div>
 {% endblock %}
