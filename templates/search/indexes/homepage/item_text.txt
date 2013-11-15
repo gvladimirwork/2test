@@ -1,5 +1,3 @@
 {{ object.name }}
 {{ object.price }}
-{% for j in object.type1.all %}
-        {{ j.name }}
-{% endfor %}
+{{ object.comment }}

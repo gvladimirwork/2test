@@ -20,6 +20,7 @@ class ItemList(ListView):
     model = Item
     context_object_name = 'items'
     template_name = 'item_list.html'
+    paginate_by = 5
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context

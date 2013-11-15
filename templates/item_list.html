@@ -2,8 +2,23 @@
 {% load i18n %}
 {% block content %}
 	<h3>{% trans "List" %}</h3>
-      <p>{% trans "Get two columns" %} <strong>{% trans "item list and show menu bar" %}</strong>.</p>
+       <ul class="pagination">
+            {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.previous_page_number }}">previous</a></li>
+            {% endif %}
+            {% for page in paginator.page_range %}
+              {% if page_obj.number == page %}
+                <li><a style='color: black;'>{{ page }}</a></li>
+              {% else %}
+                 <li><a href="?page={{ page }}">{{ page }}</a></li>
+              {% endif %}
+            {% endfor %}
+            {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}">next</a></li>
+            {% endif %}
+       </ul>
       <div class="row">
+
         <div class="col-md-8">
         {% for item in items %}
             <div class="jumbotron">
@@ -12,4 +27,5 @@
             </div>
         {% endfor %}
         </div>
+
 {% endblock %}
